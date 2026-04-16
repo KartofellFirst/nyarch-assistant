@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from flask_cors import CORS
 import os
 import requests
@@ -19,8 +19,7 @@ if not DEEPSEEK_API_KEY:
 
 @app.route('/')
 def index():
-    """Serve the chat interface"""
-    return send_from_directory('.', 'index.html')
+    return render_template("index.html")
 
 @app.route('/chat', methods=['POST'])
 def chat():
